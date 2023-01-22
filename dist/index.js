@@ -1,0 +1,26 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const cors = require("cors");
+const express = require("express");
+require("./db/mongoose");
+const default_1 = require("./routes/default");
+const objectiveRoutes_1 = require("./routes/objectiveRoutes");
+const sessionRoutes_1 = require("./routes/sessionRoutes");
+const taskRoutes_1 = require("./routes/taskRoutes");
+const userRoutes_1 = require("./routes/userRoutes");
+const cookieParser = require('cookie-parser');
+const app = express();
+app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
+app.use("/", userRoutes_1.userRouter);
+app.use("/", sessionRoutes_1.sessionRouter);
+app.use("/", objectiveRoutes_1.objectiveRouter);
+app.use("/", taskRoutes_1.taskRouter);
+app.use("/", default_1.defaultRouter);
+const port = 4000;
+const server = app.listen(port, () => {
+    console.log(`Server is up on port ${port}`);
+});
+module.exports = { app, server };
