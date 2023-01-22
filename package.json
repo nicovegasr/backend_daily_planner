@@ -39,7 +39,7 @@
         "test": "test"
     },
     "scripts": {
-        "start": "nodemon dist/index.js",
+        "start": "node dist/index.js",
         "test": "jest --testPathPattern post* --detectOpenHandles --verbose --silent && jest --testPathPattern get* --detectOpenHandles --verbose --silent && jest --testPathPattern delete* --detectOpenHandles --verbose --silent" ,
         "watch": "jest --detectOpenHandles --watch --silent",
         "coverage": "npm test -- --coverage"
